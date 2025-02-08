@@ -1,0 +1,17 @@
+mkdir public  # إنشاء مجلد public إذا لم يكن موجودًا
+(
+echo ^<!DOCTYPE html^>
+echo ^<html lang="en"^>
+echo ^<head^>
+echo ^    <meta charset="UTF-8">^>
+echo ^    <meta name="viewport" content="width=device-width, initial-scale=1.0">^>
+echo ^    <title>Ai Mo Van and Man</title>^>
+echo ^    <link rel="icon" type="image/png" href="/favicon.ico">^>
+echo ^</head>^>
+echo ^<body^>
+echo ^    <div id="root"></div>^>
+echo ^    <script type="module" src="/src/main.jsx"></script>^>
+echo ^</body>^>
+echo ^</html>^>
+) > public/index.html
+notepad public/index.html  # لفتح الملف بعد الإنشاء
