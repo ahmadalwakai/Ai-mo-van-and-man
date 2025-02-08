@@ -2,6 +2,7 @@
   "name": "mo-van-and-man",
   "version": "1.0.0",
   "private": true,
+  "homepage": "https://ahmadalwakai.github.io/Ai-mo-van-and-man/",
   "scripts": {
     "dev": "vite",
     "start": "vite",
