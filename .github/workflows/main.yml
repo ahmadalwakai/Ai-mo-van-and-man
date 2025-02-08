@@ -6,7 +6,7 @@ on:
       - main
 
 permissions:
-  contents: write  # السماح بالتعديل على المستودع
+  contents: write  # السماح للتحديثات
 
 jobs:
   deploy:
@@ -33,4 +33,3 @@ jobs:
           git add .
           git commit -m "Deploy to GitHub Pages" || exit 0
           git push https://ahmadalwakai:${{ secrets.ACTIONS_DEPLOY_KEY }}@github.com/ahmadalwakai/Ai-mo-van-and-man.git gh-pages --force
-
