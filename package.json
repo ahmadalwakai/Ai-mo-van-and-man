@@ -1,0 +1,25 @@
+{
+  "name": "project_root",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahmadalwakai/Ai-mo-van-and-man.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ahmadalwakai/Ai-mo-van-and-man/issues"
+  },
+  "homepage": "https://github.com/ahmadalwakai/Ai-mo-van-and-man#readme"
+}
