@@ -1,4 +1,4 @@
-name: Auto Update Project 
+name: Auto Update Project
 
 on:
   push:
@@ -7,6 +7,9 @@ on:
   schedule:
     - cron: '0 0 * * *'  # Runs the update process daily at midnight (UTC)
 
+permissions:
+  contents: write  # ✅ أضف هذا السطر لإعطاء صلاحية الكتابة على المستودع
+
 jobs:
   update:
     runs-on: ubuntu-latest
@@ -14,7 +17,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}  # Use GitHub-provided token
+          token: ${{ secrets.GITHUB_TOKEN }}  # ✅ تأكد من أن التوكن موجود
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -22,10 +25,10 @@ jobs:
           node-version: 16
 
       - name: Install Dependencies
-        run: npm install  # Change this for other languages, e.g., pip install -r requirements.txt for Python
+        run: npm install  # ✅ تثبيت التبعيات
 
       - name: Run Updates
-        run: npm update  # Modify this to run any custom update commands
+        run: npm update  # ✅ تحديث الحزم
 
       - name: Commit and Push Changes
         run: |
@@ -35,4 +38,4 @@ jobs:
           git commit -m "Automated update: Dependencies and Code Improvements" || exit 0
           git push origin main
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use GitHub token for authentication
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # ✅ تأكد من استخدام التوكن الصحيح
