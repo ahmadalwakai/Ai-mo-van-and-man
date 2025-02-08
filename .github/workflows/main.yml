@@ -1,4 +1,4 @@
-name: Auto Update Project
+name: Auto Update Project 
 
 on:
   push:
@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}  # Use GitHub-provided token
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -32,3 +34,5 @@ jobs:
           git add .
           git commit -m "Automated update: Dependencies and Code Improvements" || exit 0
           git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use GitHub token for authentication
