@@ -1,0 +1,39 @@
+name: Auto Update Project
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '0 0 * * *'  # Runs the update process daily at midnight (UTC)
+
+permissions:
+  contents: write  # ✅ إعطاء الصلاحيات للـ Actions لدفع التحديثات
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install Dependencies
+        run: npm install  
+
+      - name: Run Updates
+        run: npm update  
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "github-actions@github.com"
+          git add .
+          git commit -m "Automated update: Dependencies and Code Improvements" || exit 0
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
