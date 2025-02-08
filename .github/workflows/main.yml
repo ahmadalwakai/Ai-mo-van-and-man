@@ -1,23 +1,19 @@
-name: Auto Update Project
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches:
       - main
-  schedule:
-    - cron: '0 0 * * *'  # Runs the update process daily at midnight (UTC)
 
 permissions:
-  contents: write  # ✅ أضف هذا السطر لإعطاء صلاحية الكتابة على المستودع
+  contents: write  # السماح بالتعديل على المستودع
 
 jobs:
-  update:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}  # ✅ تأكد من أن التوكن موجود
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -25,17 +21,16 @@ jobs:
           node-version: 16
 
       - name: Install Dependencies
-        run: npm install  # ✅ تثبيت التبعيات
+        run: npm install
 
-      - name: Run Updates
-        run: npm update  # ✅ تحديث الحزم
+      - name: Build Project
+        run: npm run build
 
-      - name: Commit and Push Changes
+      - name: Deploy to GitHub Pages
         run: |
           git config --global user.name "GitHub Actions Bot"
           git config --global user.email "github-actions@github.com"
           git add .
-          git commit -m "Automated update: Dependencies and Code Improvements" || exit 0
-          git push origin main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # ✅ تأكد من استخدام التوكن الصحيح
+          git commit -m "Deploy to GitHub Pages" || exit 0
+          git push https://ahmadalwakai:${{ secrets.ACTIONS_DEPLOY_KEY }}@github.com/ahmadalwakai/Ai-mo-van-and-man.git gh-pages --force
+
