@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/ahmadalwakai/Ai-mo-van-and-man/issues"
   },
-  "homepage": "https://github.com/ahmadalwakai/Ai-mo-van-and-man#readme"
+  "homepage": "https://github.com/ahmadalwakai/Ai-mo-van-and-man#readme",
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  }
 }
