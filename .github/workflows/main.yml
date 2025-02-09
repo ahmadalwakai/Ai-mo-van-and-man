@@ -1,4 +1,4 @@
-name: Deploy static content to Pages
+name: Deploy React App to GitHub Pages
 
 on:
   push:
@@ -13,7 +13,7 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: true  # ✅ Automatically cancels previous runs to prevent conflicts
+  cancel-in-progress: true  # ✅ Cancels previous deployments to avoid conflicts
 
 jobs:
   deploy:
@@ -21,6 +21,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -28,7 +29,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18  # ✅ Ensure you use a stable Node.js version
 
       - name: Install Dependencies
         run: npm install
@@ -41,7 +42,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: frontend/dist  # ✅ Ensure this points to the built files
+          path: frontend/dist  # ✅ Make sure this path is correct
 
       - name: Deploy to GitHub Pages
         id: deployment
