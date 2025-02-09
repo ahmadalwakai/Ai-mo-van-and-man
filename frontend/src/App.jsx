@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
@@ -19,15 +19,15 @@ const App = () => {
         <div className="flex-1">
           <Navbar />
           <main className="p-4">
-            <Switch>
-              <Route path="/" component={Home} exact />
-              <Route path="/orders" component={Orders} />
-              <Route path="/pricing" component={Pricing} />
-              <Route path="/tracking" component={Tracking} />
-              <Route path="/analytics" component={Analytics} />
-              <Route path="/login" component={Login} />
-              <Route path="/signup" component={Signup} />
-            </Switch>
+            <Routes> {/* ✅ Replaced Switch with Routes */}
+              <Route path="/" element={<Home />} />
+              <Route path="/orders" element={<Orders />} />
+              <Route path="/pricing" element={<Pricing />} />
+              <Route path="/tracking" element={<Tracking />} />
+              <Route path="/analytics" element={<Analytics />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+            </Routes>
           </main>
           <Footer />
         </div>

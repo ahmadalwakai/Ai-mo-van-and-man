@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FaTruckMoving } from "react-icons/fa";
+import { FaTruckMoving } from "react-icons/fa6"; 
 
 const Navbar = () => {
   return (
@@ -20,3 +20,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
