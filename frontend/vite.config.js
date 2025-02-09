@@ -3,7 +3,10 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  base: "/Ai-mo-van-and-man/", // ✅ Ensures correct base path for GitHub Pages
+
+  // ✅ Dynamically sets the base path for GitHub Pages
+  base: process.env.NODE_ENV === "production" ? "/Ai-mo-van-and-man/" : "./",
+
   build: {
     outDir: "dist",
     assetsDir: "assets",
@@ -15,11 +18,29 @@ export default defineConfig({
       },
     },
   },
+
   server: {
-    host: true,
+    host: "0.0.0.0",
     port: 5173,
+    open: true,
   },
+
+  preview: {
+    port: 5000,
+    open: true,
+  },
+
   optimizeDeps: {
     include: ["axios", "react", "react-dom", "react-router-dom"],
-  }
+  },
+
+  define: {
+    "process.env": {},
+  },
+
+  resolve: {
+    alias: {
+      "@": "/src",
+    },
+  },
 });
