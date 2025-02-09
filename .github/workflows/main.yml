@@ -13,7 +13,7 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: true  # ✅ Cancels previous deployments to avoid conflicts
+  cancel-in-progress: true
 
 jobs:
   deploy:
@@ -29,10 +29,14 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18  # ✅ Ensure you use a stable Node.js version
+          node-version: 18
 
       - name: Install Dependencies
         run: npm install
+        working-directory: frontend
+
+      - name: Verify axios Installation
+        run: npm list axios
         working-directory: frontend
 
       - name: Build Project
@@ -42,7 +46,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: frontend/dist  # ✅ Make sure this path is correct
+          path: frontend/dist
 
       - name: Deploy to GitHub Pages
         id: deployment
