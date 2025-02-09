@@ -3,9 +3,9 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-
-  // ✅ Dynamically sets the base path for GitHub Pages
-  base: process.env.NODE_ENV === "production" ? "/Ai-mo-van-and-man/" : "./",
+  
+  // ✅ Ensures correct paths for GitHub Pages
+  base: "/Ai-mo-van-and-man/",
 
   build: {
     outDir: "dist",
@@ -36,11 +36,5 @@ export default defineConfig({
 
   define: {
     "process.env": {},
-  },
-
-  resolve: {
-    alias: {
-      "@": "/src",
-    },
   },
 });
