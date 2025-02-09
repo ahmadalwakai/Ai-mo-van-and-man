@@ -27,9 +27,7 @@ jobs:
         run: npm run build
 
       - name: Deploy to GitHub Pages
-        run: |
-          git config --global user.name "GitHub Actions Bot"
-          git config --global user.email "github-actions@github.com"
-          git add .
-          git commit -m "Deploy to GitHub Pages" || exit 0
-          git push https://ahmadalwakai:${{ secrets.ACTIONS_DEPLOY_KEY }}@github.com/ahmadalwakai/Ai-mo-van-and-man.git gh-pages --force
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages  
+          folder: dist       
