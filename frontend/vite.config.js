@@ -4,8 +4,7 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   
-  // ✅ Ensures correct paths for GitHub Pages
-  base: "/Ai-mo-van-and-man/",
+  base: process.env.NODE_ENV === "production" ? "/Ai-mo-van-and-man/" : "/",
 
   build: {
     outDir: "dist",
@@ -28,13 +27,5 @@ export default defineConfig({
   preview: {
     port: 5000,
     open: true,
-  },
-
-  optimizeDeps: {
-    include: ["axios", "react", "react-dom", "react-router-dom"],
-  },
-
-  define: {
-    "process.env": {},
   },
 });
