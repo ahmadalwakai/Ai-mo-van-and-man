@@ -6,11 +6,10 @@ export default defineConfig({
   base: "/Ai-mo-van-and-man/",
   build: {
     rollupOptions: {
-      input: "index.html",
-      external: ["axios"], // ✅ Ensures axios is correctly resolved
-    }
+      external: [],  // ✅ Remove axios from external (to ensure it is bundled)
+    },
   },
   optimizeDeps: {
-    include: ["axios"] // ✅ Ensures axios is included in the dependencies
+    include: ["axios"], // ✅ Ensures axios is included in the dependency optimization step
   }
 });
